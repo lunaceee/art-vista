@@ -34,3 +34,9 @@ export type ColorData = {
     s: number;
 };
 
+export type ArtworkFilterData = {
+    artists: string[]
+    colors: string[]
+    placesOfOrigin: string[]
+    artworkTypes: string[]
+}
