@@ -39,7 +39,7 @@ const Button: React.FC<ButtonProps> = ({
     return type === 'link' ? (
         <a
             onClick={onClick}
-            className={`${baseStyles} ${disabled ? disabledStyles : ''} text-violet-600 hover:underline underline-offset-4 ease-in-out ${sizes[size]} `}
+            className={`${baseStyles}  text-violet-600 hover:underline underline-offset-4 ease-in-out ${sizes[size]} `}
             role="button"
         >
             {children}
