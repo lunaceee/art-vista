@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import Placeholder from '../assets/Placeholder.svg';
 
 type CardProps = {
     source: string;
@@ -7,30 +8,31 @@ type CardProps = {
     artist?: string;
     width?: number;
     height?: number;
-}
+};
 
-const Card: React.FC<CardProps> = ({ source, title, artist, width = 800, height = 540 }) => {
+const Card: React.FC<CardProps> = ({ source, title, artist, width, height }) => {
+    const [imgSrc, setImgSrc] = useState(source);
+
+    const fallback = Placeholder;
+
     return (
         <>
-            {/* <div className="group overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100"> */}
-            <div className="break-inside-avoid mb-8 group">
+            <div className="break-inside-avoid mb-8">
                 <Image
                     alt={`Image for ${title}`}
-                    src={source}
-                    layout="responsive"
-                    width={width} // Replace with appropriate width
-                    height={height} // Replace with appropriate height
-                    className="object-cover group-hover:opacity-75 h-auto max-w-full rounded-lg cursor-pointer"
+                    src={imgSrc}
+                    width={width || 800}
+                    height={height || 800}
+                    className="object-cover h-auto max-w-full rounded-lg"
+                    onError={() => setImgSrc(fallback)}
+
                 />
                 <button type="button" className="absolute inset-0 focus:outline-hidden">
                     <span className="sr-only">View details for {title}</span>
                 </button>
             </div>
-            {/* </div> */}
             <h3 className="mt-2">{title}</h3>
-            {
-                artist && <p>{artist}</p>
-            }
+            {artist && <p>{artist}</p>}
         </>
     );
 };

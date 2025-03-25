@@ -1,0 +1,70 @@
+import Card from "@/app/ui/Card";
+import { fetchArtworks } from "@/app/lib/api";
+import { Artwork } from "@/app/lib/definitions";
+import { useState, useEffect } from "react";
+import { useInView } from 'react-intersection-observer'
+import Link from "next/link";
+
+const limit = 50; // Number of artworks to fetch per page
+
+const Artworks = () => {
+    const [artworks, setArtworks] = useState<Artwork[]>([]);
+    const [offset, setOffset] = useState(limit)
+    const { ref, inView } = useInView()
+
+    const loadArtworks = async () => {
+        const { artworks: newArtworks } = await fetchArtworks(limit);
+        setArtworks((prev) => [...prev, ...newArtworks]);
+        setOffset(offset => offset + limit)
+    };
+
+    useEffect(() => {
+        if (inView) {
+            loadArtworks()
+        }
+    }, [inView])
+
+    return <div className="p-4 md:pb-8">
+        <header>
+            <div className="flex border-b border-gray-200 pt-24 pb-6">
+                <h1 className="text-4xl font-bold tracking-tight text-gray-900">Art Vista</h1>
+                <div className="">
+                    <hr />
+                </div>
+            </div>
+            <p className="pb-8">
+                Welcome to Art Vista, your destination for exploring a diverse collection of stunning artworks from talented artists worldwide. Whether you're an enthusiast, collector, or simply appreciate creativity, our gallery offers curated pieces to suit all tastes. Discover vibrant colors, intricate details, and thought-provoking works that inspire and connect.
+            </p>
+        </header>
+        <section aria-labelledby="artworks-heading" >
+            <h2 id="products-heading" className="sr-only">
+                Artworks
+            </h2>
+        </section>
+        <section aria-labelledby="artworks-content">
+            <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {
+                    artworks.map((item) => (
+                        // the ID from the API is not unique
+                        // Using built-in browswer crypto to generate unique keys as an alternative to database UUIDs
+                        <li key={crypto.randomUUID()} className="cursor-pointer hover:scale-102 transition-transform duration-300">
+                            <Link href={`/gallery/${item.id}`}>
+                                <Card
+                                    title={item.title}
+                                    source={`https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`}
+                                    artist={item.artist_title || 'Unknown'}
+                                />
+                            </Link>
+                        </li>
+                    ))
+                }
+            </ul>
+            {/* This div triggers loading more data when it enters the viewport */}
+            <div ref={ref} className="text-sm text-center py-4">
+                {artworks.length > 0 && <p>Loading more artworks...</p>}
+            </div>
+        </section>
+    </div>
+}
+
+export default Artworks;

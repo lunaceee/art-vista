@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export type ButtonProps = {
     children: React.ReactNode;
@@ -8,6 +9,7 @@ export type ButtonProps = {
     size?: 'sm' | 'md' | 'lg';
     disabled?: boolean;
     className?: string;
+    href?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,11 +19,12 @@ const Button: React.FC<ButtonProps> = ({
     variant = 'primary',
     disabled = false,
     size = 'md',
+    href,
 }) => {
     const baseStyles =
         'rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all cursor-pointer';
     const variants = {
-        primary: 'bg-violet-600 text-white hover:bg-violet-400 focus:ring-violet-600',
+        primary: 'bg-violet-600 text-white hover:bg-violet-500 focus:ring-violet-600',
         secondary: 'text-violet-600 border-2 border-violet-600 hover:bg-zinc-100 focus:ring-amber-400',
     };
 
@@ -37,16 +40,15 @@ const Button: React.FC<ButtonProps> = ({
          ${disabled ? disabledStyles : ''} `;
 
     return type === 'link' ? (
-        <a
-            onClick={onClick}
+        <Link
+            href={href || "#"}
             className={`${baseStyles}  text-violet-600 hover:underline underline-offset-4 ease-in-out ${sizes[size]} `}
             role="button"
         >
             {children}
-        </a>
+        </Link>
     ) : (
         <button
-            type={type}
             onClick={onClick}
             disabled={disabled}
             className={computedClassName}

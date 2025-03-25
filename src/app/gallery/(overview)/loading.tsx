@@ -1,8 +1,10 @@
-import { GallerySkeleton } from "@/app/ui/skeletons";
+import { CardWithDetails } from "@/app/ui/skeletons";
 
 const Loading = () => {
     return (
-        <GallerySkeleton />
+        <div className="h-screen flex items-center justify-center gap-4">
+            <CardWithDetails />
+        </div>
     );
 };
 

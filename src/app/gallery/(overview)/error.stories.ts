@@ -1,6 +1,5 @@
 import { StoryObj, Meta } from "@storybook/react";
 import Error from "./error";
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 
 const meta = {
