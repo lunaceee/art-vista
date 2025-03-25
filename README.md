@@ -1,8 +1,10 @@
+# 🖼️ Art Vista
+
+## [Project Brief](https://lunaceee.notion.site/Art-Vista-project-summary-1bdbcf91f60680bfbcebd7e683559599?pvs=25#1c1bcf91f60680208b72fe0c1afcc36d)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
-
-First, run the development server:
+## Run project locally
 
 ```bash
 npm run dev
@@ -16,14 +18,19 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Learn More
+## Run Storybook locally
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run storybook
+# or
+yarn storybook
+# or
+pnpm storybook
+# or
+bun storybook
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:6006](http://localhost:6006) with your browser to see the result.
 
 ## Deploy on Vercel
 
