@@ -1,5 +1,7 @@
 # 🖼️ Art Vista
 
+![image](./public/home-screenshot.png)
+
 ## [Project Brief](https://lunaceee.notion.site/Art-Vista-project-summary-1bdbcf91f60680bfbcebd7e683559599?pvs=25#1c1bcf91f60680208b72fe0c1afcc36d)
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
