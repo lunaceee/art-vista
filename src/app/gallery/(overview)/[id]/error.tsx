@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import Button from '@/app/ui/Button';
+import Button from '@/app/ui/button';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function Error({

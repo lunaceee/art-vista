@@ -1,14 +1,14 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { CardSkeleton } from '@/app/ui/skeletons';
+import { CardsSkeleton } from '@/app/ui/skeletons';
 
 const meta = {
-    title: 'CardSkeleton',
-    component: CardSkeleton,
+    title: 'CardsSkeleton',
+    component: CardsSkeleton,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof CardSkeleton>;
+} satisfies Meta<typeof CardsSkeleton>;
 
 export default meta;
 

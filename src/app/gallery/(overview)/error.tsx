@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import Button from '@/app/ui/Button';
+import Button from '@/app/ui/button';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function Error({
@@ -17,7 +17,7 @@ export default function Error({
     }, [error]);
 
     return (
-        <main className="flex h-full flex-col items-center justify-center gap-4">
+        <main className="flex h-screen flex-col items-center justify-center gap-4">
             <ExclamationTriangleIcon className="w-10 text-zinc-400" />
             <h2 className="text-center">Something went wrong!</h2>
             <p className="text-center">

@@ -5,9 +5,7 @@ const Page = async (props: { params: Promise<{ id: string }> }) => {
     const id = Number(params.id);
 
     return (
-        <div>
-            <Artwork id={id} />
-        </div>
+        <Artwork id={id} />
     );
 }
 

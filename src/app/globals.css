@@ -68,11 +68,3 @@ h5 {
 h6 {
   @apply text-sm;
 }
-
-/* @theme {
-  @keyframes shimmer {
-    '100%': {
-      transform: 'translateX(100%)',
-    }
-  }
-} */
