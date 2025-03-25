@@ -1,7 +1,7 @@
 'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Placeholder from '../assets/Placeholder.svg';
 
 type CardProps = {
     source: string;
@@ -14,8 +14,6 @@ type CardProps = {
 const Card: React.FC<CardProps> = ({ source, title, artist, width, height }) => {
     const [imgSrc, setImgSrc] = useState(source);
 
-    const fallback = Placeholder;
-
     return (
         <>
             <div className="break-inside-avoid mb-8">
@@ -25,7 +23,7 @@ const Card: React.FC<CardProps> = ({ source, title, artist, width, height }) => 
                     width={width || 800}
                     height={height || 800}
                     className="object-cover h-auto max-w-full rounded-lg"
-                    onError={() => setImgSrc(fallback)}
+                    onError={() => setImgSrc("/placeholder.svg")}
 
                 />
                 <button type="button" className="absolute inset-0 focus:outline-hidden">

@@ -12,27 +12,16 @@ const limit = 50; // Number of artworks to fetch per page
 
 const Artworks = () => {
     const [artworks, setArtworks] = useState<Artwork[]>([]);
-    const [offset, setOffset] = useState(limit)
+    const [, setOffset] = useState(limit)
     const [loading, setLoading] = useState(false); // Local loading state
 
     const { ref, inView } = useInView()
 
-    // Fetch initial artworks
-    useEffect(() => {
-        const fetchInitialArtworks = async () => {
-            setLoading(true);
-            const { artworks: initialArtworks } = await fetchArtworks(limit);
-            setArtworks(initialArtworks);
-            setLoading(false);
-        };
-
-        fetchInitialArtworks();
-    }, []);
-
-
     const loadArtworks = async () => {
+        setLoading(true);
         const { artworks: newArtworks } = await fetchArtworks(limit);
         setArtworks((prev) => [...prev, ...newArtworks]);
+        setLoading(false);
         setOffset(offset => offset + limit)
     };
 
@@ -70,7 +59,7 @@ const Artworks = () => {
                             artworks.map((item) => (
                                 // the ID from the API is not unique
                                 // Using built-in browswer crypto to generate unique keys as an alternative to database UUIDs
-                                <li key={crypto.randomUUID()} className="cursor-pointer hover:scale-102 transition-transform duration-300">
+                                <li key={crypto.randomUUID()} className="cursor-pointer">
                                     <Link href={`/gallery/${item.id}`}>
                                         <Card
                                             title={item.title}

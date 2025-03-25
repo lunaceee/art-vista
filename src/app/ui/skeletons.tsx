@@ -1,11 +1,8 @@
 // Loading animation
-const shimmer =
-  'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent';
-
 export function CardSkeleton() {
   return (
     <div
-      className={`${shimmer} relative overflow-hidden rounded-xl p-2 w-80`}
+      className={`animate-pulse relative overflow-hidden rounded-xl p-2 w-80`}
     >
       <div className="flex items-center justify-center truncate rounded-xl bg-white px-4 py-8">
         <div className="h-60 w-80 rounded-md bg-gray-200" />
@@ -20,7 +17,7 @@ export function CardSkeleton() {
 
 export function CardsSkeleton() {
   return (
-    <div className="grid gap-6 grid-cols-1 lg:grid-cols-4">
+    <div className="grid gap-4 grid-cols-1 lg:grid-cols-4 mx-auto">
       <CardSkeleton />
       <CardSkeleton />
       <CardSkeleton />
@@ -32,7 +29,7 @@ export function CardsSkeleton() {
 export function CardWithDetails() {
   return (
     <div
-      className={`${shimmer} relative overflow-hidden rounded-xlp-2 w-96`}
+      className={`animate-pulse relative overflow-hidden rounded-xlp-2 w-96`}
     >
       <div className="flex items-center justify-center truncate rounded-xl bg-white px-4 py-8">
         <div className="h-96 w-80 rounded-md bg-gray-200" />
@@ -52,7 +49,7 @@ export function GallerySkeleton() {
   return (
     <>
       <div
-        className={`${shimmer} relative mb-4 h-8 w-36 overflow-hidden rounded-md bg-gray-100`}
+        className={`animate-pulse relative mb-4 h-8 w-36 overflow-hidden rounded-md bg-gray-100`}
       />
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <CardSkeleton />
@@ -68,12 +65,12 @@ export function ArtworkSkeleton() {
   return (
     <div className="h-screen flex flex-col items-center justify-center p-10">
       <div
-        className={`${shimmer} relative mb-4 h-48 w-full max-w-md overflow-hidden rounded-lg bg-gray-100`}
+        className={`animate-pulse relative mb-4 h-48 w-full max-w-md overflow-hidden rounded-lg bg-gray-100`}
       />
       <div className="flex flex-col items-start gap-2">
-        <div className={`${shimmer} h-6 w-1/2 rounded-md bg-gray-100`} />
-        <div className={`${shimmer} h-4 w-1/3 rounded-md bg-gray-100`} />
-        <div className={`${shimmer} h-4 w-full rounded-md bg-gray-100`} />
+        <div className={`h-6 w-1/2 rounded-md bg-gray-100`} />
+        <div className={`h-4 w-1/3 rounded-md bg-gray-100`} />
+        <div className={`h-4 w-full rounded-md bg-gray-100`} />
       </div>
     </div>
   );
