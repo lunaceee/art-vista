@@ -8,7 +8,7 @@ export default function Home() {
       <div className="mx-auto max-w-7xl h-screen flex flex-col justify-center items-center">
         {/* Background animation */}
         <MatrixBackground text="Art Vista" fontSize={20} />
-        <div className="p-10 mb-4 bg-violet-100/30 rounded-lg shadow-md animate-fadeIn">
+        <div className="p-10 mb-4 bg-violet-100/30 rounded-lg shadow-md">
           <h1 className="font-bold">Art Vista</h1>
         </div>
         <div className="text-white">

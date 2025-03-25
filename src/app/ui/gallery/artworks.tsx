@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import { useInView } from 'react-intersection-observer'
 import Link from "next/link";
 import Loading from "@/app/ui/loading";
+import { ScrollToTop } from "@/app/lib/utils";
+
 
 const limit = 50; // Number of artworks to fetch per page
 
@@ -76,6 +78,7 @@ const Artworks = () => {
                     </div>
                 </>
             )}
+            <ScrollToTop />
         </section>
     </div>
 }
