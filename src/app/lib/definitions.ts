@@ -1,42 +1,41 @@
-export type GalleryPayload = {
-    pagination: Pagination;
-    data: Artwork[];
-};
+import { z } from 'zod';
 
-export type Pagination = {
-    total: number;
-    limit: number;
-    offset: number;
-    total_pages: number;
-    current_page: number;
-    next_url: string;
-};
+export const ArtworkSchema = z.object({
+    id: z.number(),
+    title: z.string(),
+    alt_titles: z.string().array().nullable(),
+    place_of_origin: z.string().nullable(),
+    description: z.string().nullable(),
+    short_description: z.string().nullable(),
+    colorfulness: z.number().nullable(),
+    color: z.object({
+        h: z.number(),
+        l: z.number(),
+        s: z.number(),
+    }).nullable(),
+    artwork_type_title: z.string().nullable(),
+    artwork_type_id: z.number().nullable(),
+    artist_id: z.number().nullable(),
+    artist_title: z.string().nullable(),
+    image_id: z.string().nullable(),
+});
 
-export type Artwork = {
-    id: number;
-    title: string;
-    alt_titles: string | null;
-    place_of_origin: string;
-    description: string | null;
-    short_description: string | null;
-    colorfulness: number | null;
-    color: ColorData | null;
-    artwork_type_title: string;
-    artwork_type_id: number;
-    artist_id: number;
-    artist_title: string;
-    image_id: string | null;
-};
+export type Artwork = z.infer<typeof ArtworkSchema>;
 
-export type ColorData = {
-    h: number;
-    l: number;
-    s: number;
-};
+export const ArtworkResponseSchema = z.object({
+    data: ArtworkSchema,
+});
 
-export type ArtworkFilterData = {
-    artists: string[]
-    colors: string[]
-    placesOfOrigin: string[]
-    artworkTypes: string[]
-}
+export const ArtworksResponseSchema = z.object({
+    pagination: z.object({
+        total: z.number(),
+        limit: z.number(),
+        offset: z.number(),
+        total_pages: z.number(),
+        current_page: z.number(),
+        // prev_url: z.string().nullable(),
+        next_url: z.string(),
+    }),
+    data: z.array(ArtworkSchema),
+});
+
