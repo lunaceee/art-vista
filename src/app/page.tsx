@@ -1,4 +1,3 @@
-"use client";
 import MatrixBackground from "./ui/matrix-background";
 import Link from "next/link";
 
