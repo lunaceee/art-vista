@@ -3,7 +3,7 @@
 import Card from "@/app/ui/card";
 import { fetchArtworks } from "@/app/lib/api";
 import { Artwork } from "@/app/lib/definitions";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useInView } from 'react-intersection-observer'
 import Link from "next/link";
 import Loading from "@/app/ui/loading";
@@ -24,20 +24,20 @@ const Artworks = () => {
 
     const { ref, inView } = useInView()
 
-    const loadArtworks = async () => {
+    const loadArtworks = useCallback(async () => {
+        if (loading) return; // Stop if a request is already in flight
         setLoading(true);
         const { artworks: newArtworks } = await fetchArtworks(limit, offset);
-        setArtworks((prev) => [...prev, ...newArtworks]);
+        setArtworks(prev => [...prev, ...newArtworks]);
+        setOffset(prev => prev + limit);
         setLoading(false);
-        setOffset(offset => offset + limit)
-    };
+    }, [loading, offset]);
 
     useEffect(() => {
         if (inView) {
-            loadArtworks()
+            loadArtworks();
         }
-    }, [inView])
-
+    }, [inView, loadArtworks]);
 
     return <div className="p-4 md:pb-8">
         <header>
