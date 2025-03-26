@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-console.log('Button component loaded');
-
 export type ButtonProps = {
     children: React.ReactNode;
     onClick?: () => void;
