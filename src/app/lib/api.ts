@@ -2,9 +2,9 @@
 
 import { ArtworksResponseSchema, ArtworkResponseSchema } from "@/app/lib/definitions";
 
-export const fetchArtworks = async (limit: number) => {
+export const fetchArtworks = async (limit: number, offset = 0) => {
     // Make a GET request to the API endpoint
-    const res = await fetch(`https://api.artic.edu/api/v1/artworks?limit=${limit}`);
+    const res = await fetch(`https://api.artic.edu/api/v1/artworks?limit=${limit}&offset=${offset}`);
     const data = await res.json();
 
     // Validate the response with Zod. This will throw if the data shape is unexpected.

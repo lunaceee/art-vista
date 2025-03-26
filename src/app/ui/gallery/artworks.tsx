@@ -15,7 +15,7 @@ const limit = 50; // Number of artworks to fetch per page
 
 const Artworks = () => {
     const [artworks, setArtworks] = useState<Artwork[]>([]);
-    const [, setOffset] = useState(limit)
+    const [offset, setOffset] = useState(0)
     const [loading, setLoading] = useState(false); // Local loading state
 
     if (!artworks) {
@@ -26,7 +26,7 @@ const Artworks = () => {
 
     const loadArtworks = async () => {
         setLoading(true);
-        const { artworks: newArtworks } = await fetchArtworks(limit);
+        const { artworks: newArtworks } = await fetchArtworks(limit, offset);
         setArtworks((prev) => [...prev, ...newArtworks]);
         setLoading(false);
         setOffset(offset => offset + limit)
