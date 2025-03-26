@@ -27,15 +27,6 @@ export const ArtworkResponseSchema = z.object({
 });
 
 export const ArtworksResponseSchema = z.object({
-    pagination: z.object({
-        total: z.number(),
-        limit: z.number(),
-        offset: z.number(),
-        total_pages: z.number(),
-        current_page: z.number(),
-        // prev_url: z.string().nullable(),
-        next_url: z.string(),
-    }),
     data: z.array(ArtworkSchema),
 });
 

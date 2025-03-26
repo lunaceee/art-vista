@@ -12,7 +12,6 @@ export const fetchArtworks = async (limit: number) => {
 
     return {
         artworks: parsedData.data,
-        pagination: parsedData.pagination
     };
 };
 
