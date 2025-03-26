@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import NotFound from "@/app/gallery/(overview)/not-found";
 import Image from "next/image";
 import parse from 'html-react-parser';
 import type { Artwork } from "@/app/lib/definitions";
@@ -14,12 +13,9 @@ const Artwork = ({ artwork }: {
 
     const [imgSrc, setImgSrc] = useState(source);
 
-    if (!artwork) {
-        return <NotFound />
-    }
 
     return (
-        <div className="h-screen p-10 bg-zinc-50">
+        <div className="h-screen p-10 bg-zinc-50 overflow-auto">
             <section aria-labelledby="artwork-heading">
                 <h2 id="artwork-heading" className="sr-only">
                     Artwork

@@ -8,6 +8,7 @@ import { useInView } from 'react-intersection-observer'
 import Link from "next/link";
 import Loading from "@/app/ui/loading";
 import { ScrollToTop } from "@/app/lib/utils";
+import { notFound } from "next/navigation";
 
 
 const limit = 50; // Number of artworks to fetch per page
@@ -16,6 +17,10 @@ const Artworks = () => {
     const [artworks, setArtworks] = useState<Artwork[]>([]);
     const [, setOffset] = useState(limit)
     const [loading, setLoading] = useState(false); // Local loading state
+
+    if (!artworks) {
+        notFound();
+    }
 
     const { ref, inView } = useInView()
 
