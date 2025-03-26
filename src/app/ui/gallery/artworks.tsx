@@ -13,8 +13,12 @@ import { notFound } from "next/navigation";
 
 const limit = 50; // Number of artworks to fetch per page
 
-const Artworks = () => {
-    const [artworks, setArtworks] = useState<Artwork[]>([]);
+const Artworks = ({ initialArtworks }: {
+    initialArtworks: {
+        artworks: Artwork[];
+    };
+}) => {
+    const [artworks, setArtworks] = useState<Artwork[]>(initialArtworks.artworks);
     const [offset, setOffset] = useState(0)
     const [loading, setLoading] = useState(false); // Local loading state
 
